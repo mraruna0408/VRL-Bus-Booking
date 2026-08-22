@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>VRL Travels - Bus Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        VRL Travels
+    </div>
+
+    <div class="nav-links">
+
+        <a onclick="showHome()">Home</a>
+
+        <a onclick="showBooking()">Bus Search</a>
+
+        <a onclick="showMyBookings()">My Bookings</a>
+
+        <a onclick="showLogin()">Login</a>
+
+        <a onclick="showRegister()">Register</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>VRL Travels</h1>
+
+    <p>Online Bus Booking System</p>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home">
+
+    <div class="home">
+
+        <h2>Welcome to VRL Travels 🚌</h2>
+
+        <p>
+            Book your bus tickets easily,
+            safely and comfortably.
+        </p>
+
+        <button onclick="showBooking()">
+            Book Your Bus
+        </button>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <h3>🚌 10+ Buses</h3>
+
+            <p>
+                Multiple bus schedules
+                available.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>💺 Easy Seat Selection</h3>
+
+            <p>
+                Choose your preferred
+                lower or upper seat.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>🎫 Instant Ticket</h3>
+
+            <p>
+                Get your booking ticket
+                instantly.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="login" class="hidden">
+
+    <div class="box">
+
+        <h2>Login</h2>
+
+        <label>Email ID</label>
+
+        <input
+            type="email"
+            id="login-email"
+            placeholder="Enter email ID">
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="login-password"
+            placeholder="Enter password">
+
+
+        <button onclick="loginUser()">
+            Login
+        </button>
+
+
+        <p>
+            Don't have an account?
+
+            <a onclick="showRegister()">
+                Register
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REGISTER ================= -->
+
+<section id="register" class="hidden">
+
+    <div class="box">
+
+        <h2>Create Account</h2>
+
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            id="register-name"
+            placeholder="Enter your name">
+
+
+        <label>Email ID</label>
+
+        <input
+            type="email"
+            id="register-email"
+            placeholder="Enter email ID">
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="register-password"
+            placeholder="Create password">
+
+
+        <button onclick="registerUser()">
+            Register
+        </button>
+
+
+        <p>
+
+            Already have an account?
+
+            <a onclick="showLogin()">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUS SEARCH ================= -->
+
+<section id="booking" class="hidden">
+
+    <div class="box">
+
+        <h2>Search Bus</h2>
+
+
+        <label>From District</label>
+
+        <select id="from">
+
+            <option value="">
+                Select Source
+            </option>
+
+            <option>Bagalkot</option>
+            <option>Bangalore Rural</option>
+            <option>Bangalore Urban</option>
+            <option>Belagavi</option>
+            <option>Ballari</option>
+            <option>Bidar</option>
+            <option>Chamarajanagar</option>
+            <option>Chikkaballapur</option>
+            <option>Chikkamagaluru</option>
+            <option>Chitradurga</option>
+            <option>Davangere</option>
+            <option>Dharwad</option>
+            <option>Gadag</option>
+            <option>Hassan</option>
+            <option>Haveri</option>
+            <option>Kalaburagi</option>
+            <option>Kolar</option>
+            <option>Koppal</option>
+            <option>Mandya</option>
+            <option>Mysuru</option>
+            <option>Raichur</option>
+            <option>Ramanagara</option>
+            <option>Shivamogga</option>
+            <option>Tumakuru</option>
+            <option>Udupi</option>
+            <option>Uttara Kannada</option>
+            <option>Vijayapura</option>
+            <option>Yadgir</option>
+
+        </select>
+
+
+        <label>To District</label>
+
+        <select id="to">
+
+            <option value="">
+                Select Destination
+            </option>
+
+            <option>Bagalkot</option>
+            <option>Bangalore Rural</option>
+            <option>Bangalore Urban</option>
+            <option>Belagavi</option>
+            <option>Ballari</option>
+            <option>Bidar</option>
+            <option>Chamarajanagar</option>
+            <option>Chikkaballapur</option>
+            <option>Chikkamagaluru</option>
+            <option>Chitradurga</option>
+            <option>Davangere</option>
+            <option>Dharwad</option>
+            <option>Gadag</option>
+            <option>Hassan</option>
+            <option>Haveri</option>
+            <option>Kalaburagi</option>
+            <option>Kolar</option>
+            <option>Koppal</option>
+            <option>Mandya</option>
+            <option>Mysuru</option>
+            <option>Raichur</option>
+            <option>Ramanagara</option>
+            <option>Shivamogga</option>
+            <option>Tumakuru</option>
+            <option>Udupi</option>
+            <option>Uttara Kannada</option>
+            <option>Vijayapura</option>
+            <option>Yadgir</option>
+
+        </select>
+
+
+        <label>Journey Date</label>
+
+        <input
+            type="date"
+            id="date">
+
+
+        <label>Passengers</label>
+
+        <input
+            type="number"
+            id="passengers"
+            min="1"
+            value="1">
+
+
+        <button onclick="searchBus()">
+            Search Buses
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUS LIST ================= -->
+
+<div id="bus-list"></div>
+
+
+<!-- ================= SEAT ================= -->
+
+<section id="seat-section">
+
+    <div class="box">
+
+        <h2>Select Your Seat</h2>
+
+
+        <div class="seat-layout">
+
+
+            <!-- LOWER -->
+
+            <div class="lower">
+
+                <h3>Lower Deck</h3>
+
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L1
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L2
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L3
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L4
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L5
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    L6
+                </button>
+
+            </div>
+
+
+            <!-- UPPER -->
+
+            <div class="upper">
+
+                <h3>Upper Deck</h3>
+
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U1
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U2
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U3
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U4
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U5
+                </button>
+
+                <button class="seat"
+                        onclick="selectSeat(this)">
+                    U6
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <p id="selected-seats">
+            Selected Seats: 0
+        </p>
+
+
+        <button onclick="continueBooking()">
+            Continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PASSENGER ================= -->
+
+<section id="passenger-section">
+
+    <div class="box">
+
+        <h2>Passenger Details</h2>
+
+
+        <label>Passenger Name</label>
+
+        <input
+            type="text"
+            id="passenger-name"
+            placeholder="Enter passenger name">
+
+
+        <label>Email ID</label>
+
+        <input
+            type="email"
+            id="passenger-email"
+            placeholder="Enter email ID">
+
+
+        <label>Age</label>
+
+        <input
+            type="number"
+            id="age"
+            placeholder="Enter age">
+
+
+        <label>Mobile Number</label>
+
+        <input
+            type="tel"
+            id="mobile"
+            maxlength="10"
+            placeholder="Enter 10 digit mobile number">
+
+
+        <p id="total-price">
+            Total Amount: ₹0
+        </p>
+
+
+        <button onclick="confirmBooking()">
+            Confirm Booking
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAYMENT ================= -->
+
+<section id="payment-section">
+
+    <div class="box">
+
+        <h2>Payment</h2>
+
+        <p class="payment-info">
+            Scan the QR code for demo payment
+        </p>
+
+
+        <div class="qr-box">
+
+            <div class="demo-qr">
+
+                <span>
+                    VRL<br>
+                    QR
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p class="demo-text">
+            Demo Payment Only
+        </p>
+
+
+        <p id="payment-amount">
+            Amount: ₹0
+        </p>
+
+
+        <button onclick="makePayment()">
+            Payment Successful
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TICKET ================= -->
+
+<section id="ticket">
+
+    <div class="box ticket-box">
+
+        <h2>VRL Travels 🎫</h2>
+
+        <p class="success">
+            ✓ Booking Confirmed
+        </p>
+
+
+        <div class="ticket-row">
+
+            <strong>Booking ID:</strong>
+
+            <span id="ticket-id"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Passenger:</strong>
+
+            <span id="ticket-name"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Email:</strong>
+
+            <span id="ticket-email"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Mobile:</strong>
+
+            <span id="ticket-mobile"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>From:</strong>
+
+            <span id="ticket-from"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>To:</strong>
+
+            <span id="ticket-to"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Date:</strong>
+
+            <span id="ticket-date"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Bus:</strong>
+
+            <span id="ticket-bus"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Departure:</strong>
+
+            <span id="ticket-departure"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Arrival:</strong>
+
+            <span id="ticket-arrival"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Duration:</strong>
+
+            <span id="ticket-duration"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Seats:</strong>
+
+            <span id="ticket-seat"></span>
+
+        </div>
+
+
+        <div class="ticket-row">
+
+            <strong>Total:</strong>
+
+            <span id="ticket-price"></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MY BOOKINGS ================= -->
+
+<section id="my-bookings">
+
+    <h2>My Bookings</h2>
+
+    <div id="booking-details"></div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
