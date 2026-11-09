@@ -10,6 +10,8 @@ let selectedDuration = "";
 
 let bookingData = null;
 
+let requiredPassengers = 1;
+
 
 /* ================= HIDE ALL ================= */
 
@@ -154,6 +156,9 @@ function loginUser() {
 /* ================= SEARCH BUS ================= */
 
 function searchBus() {
+
+    requiredPassengers =
+    parseInt(document.getElementById("passengers").value) || 1;
 
     let from =
         document.getElementById("from").value;
@@ -445,20 +450,32 @@ function selectBus(
 
 function selectSeat(seat) {
 
-    seat.classList.toggle("selected");
-
-
     let selectedSeats =
-        document.querySelectorAll(
-            ".seat.selected"
-        );
+        document.querySelectorAll(".seat.selected");
 
+    if (seat.classList.contains("selected")) {
 
-    document.getElementById(
-        "selected-seats"
-    ).innerText =
-        "Selected Seats: " +
-        selectedSeats.length;
+        seat.classList.remove("selected");
+
+    } else {
+
+        if (selectedSeats.length >= requiredPassengers) {
+
+            alert("You can select only " +
+                requiredPassengers + " seat(s).");
+
+            return;
+        }
+
+        seat.classList.add("selected");
+    }
+
+    selectedSeats =
+        document.querySelectorAll(".seat.selected");
+
+    document.getElementById("selected-seats").innerText =
+        "Selected Seats: " + selectedSeats.length;
+
 }
 
 
@@ -472,14 +489,16 @@ function continueBooking() {
         );
 
 
-    if (selectedSeats.length === 0) {
+    if (selectedSeats.length !== requiredPassengers) {
 
-        alert(
-            "Please select at least one seat."
-        );
+    alert(
+        "Please select exactly " +
+        requiredPassengers +
+        " seat(s) for your passengers."
+    );
 
-        return;
-    }
+    return;
+}
 
 
     let total =
